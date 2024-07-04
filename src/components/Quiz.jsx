@@ -1,5 +1,6 @@
 import {useState} from "react";
 import QUESTIONS from "../questions.js";
+import QuestionTimer from "./QuestionTimer.jsx";
 import com from "../assets/quiz-complete.png";
 
 export default function Quiz (){
@@ -27,6 +28,7 @@ if (quizIsComplete){
     return (
         <div id="quiz">
     <div id = "question">
+        <QuestionTimer timeout={10000} ontimeout={() => handleSelectAnswer(null)}/>
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
         <ul id="answers">
             {shuffledAnswer.map((answer) => (
