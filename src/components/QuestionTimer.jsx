@@ -9,7 +9,7 @@ export default function QuestionTimer({timeout, ontimeout}){
 
     useEffect(() => {
         setInterval(() =>{
-            setRemainingTime(preRemainingTime => prevRemainingTime - 100);
+            setRemainingTime(prevRemainingTime => prevRemainingTime - 100);
         },100);
     }, []);
 
