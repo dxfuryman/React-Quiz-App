@@ -13,6 +13,7 @@ setUserAnswer((prevUserAnswer) => {
 })
 }
     return (
+        <div id="quiz">
     <div id = "question">
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
         <ul id="answers">
@@ -23,5 +24,6 @@ setUserAnswer((prevUserAnswer) => {
             ))}
         </ul>
     </div>
+        </div>
 )
 }
