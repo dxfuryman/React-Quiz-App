@@ -1,11 +1,10 @@
-    import {useCallback, useRef, useState} from "react";
+    import {useCallback, useState} from "react";
 import QUESTIONS from "../questions.js";
 import QuestionTimer from "./QuestionTimer.jsx";
 import com from "../assets/quiz-complete.png";
 import Answers from '../components/Answers.jsx'
 
 export default function Quiz (){
-    const shuffledAnswer = useRef();
     const [answerState, setAnswerState] = useState('');
 // const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 const [userAnswer, setUserAnswer] = useState([]);
@@ -55,7 +54,11 @@ if (!shuffledAnswer.current){
             timeout={10000}
             ontimeout={handleSkipAnswer}/>
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-<Answers answers={QUESTIONS[activeQuestionIndex].answers}/>
+<Answers
+    answers={QUESTIONS[activeQuestionIndex].answers}
+    answerState={answerState}
+    selectedAnswer={userAnswer[userAnswer.length - 1]}
+/>
     </div>
         </div>
 )

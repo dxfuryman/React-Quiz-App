@@ -1,5 +1,7 @@
+import {useRef} from "react";
 
 export default function Answers({answers, selectedAnswer, answerState}){
+const shuffledAnswer = useRef();
     return (
         <ul id="answers">
             {shuffledAnswer.current.map((answer) => {
