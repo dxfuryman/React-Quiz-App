@@ -2,6 +2,7 @@
 import QUESTIONS from "../questions.js";
 import QuestionTimer from "./QuestionTimer.jsx";
 import com from "../assets/quiz-complete.png";
+import Answers from '../components/Answers.jsx'
 
 export default function Quiz (){
     const shuffledAnswer = useRef();
@@ -54,29 +55,7 @@ if (!shuffledAnswer.current){
             timeout={10000}
             ontimeout={handleSkipAnswer}/>
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-        <ul id="answers">
-            {shuffledAnswer.current.map((answer) => {
-                const isSelected = userAnswer[userAnswer.length - 1] ===answer;
-                let cssClasses ='';
-                if (answerState === 'answered' && isSelected){
-                    cssClasses = 'selected';
-                }
-                if ((answerState === 'correct'|| answerState === 'wrong') && isSelected){
-                    cssClasses = answerState;
-                }
-                return (
-                    <li key={answer} className="answer">
-                        <button
-                            onClick={() => handleSelectAnswer(answer)}
-                        className={cssClasses}
-                        >{answer}
-                        </button>
-                    </li>
-                )
-            }
 
-            )}
-        </ul>
     </div>
         </div>
 )
