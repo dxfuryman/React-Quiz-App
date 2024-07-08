@@ -55,7 +55,7 @@ if (!shuffledAnswer.current){
             timeout={10000}
             ontimeout={handleSkipAnswer}/>
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-
+<Answers answers={QUESTIONS[activeQuestionIndex].answers}/>
     </div>
         </div>
 )
