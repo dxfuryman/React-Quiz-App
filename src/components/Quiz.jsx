@@ -40,10 +40,6 @@ if (quizIsComplete){
         <h2>Quiz Completed!</h2>
     </div>
 }
-if (!shuffledAnswer.current){
-    shuffledAnswer.current = [...QUESTIONS[activeQuestionIndex].answers];
-    shuffledAnswer.current.sort(() => Math.random() - 0.5);
-}
 
 
     return (
@@ -55,9 +51,11 @@ if (!shuffledAnswer.current){
             ontimeout={handleSkipAnswer}/>
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
 <Answers
+    key = {activeQuestionIndex }
     answers={QUESTIONS[activeQuestionIndex].answers}
     answerState={answerState}
     selectedAnswer={userAnswer[userAnswer.length - 1]}
+    onSelect={handleSelectAnswer}
 />
     </div>
         </div>

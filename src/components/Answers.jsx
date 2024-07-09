@@ -1,11 +1,17 @@
 import {useRef} from "react";
+import QUESTIONS from "../questions.js";
 
-export default function Answers({answers, selectedAnswer, answerState}){
+export default function Answers({answers, selectedAnswer, answerState, onSelect}){
 const shuffledAnswer = useRef();
+
+    if (!shuffledAnswer.current){
+        shuffledAnswer.current = [...answers];
+        shuffledAnswer.current.sort(() => Math.random() - 0.5);
+    }
     return (
         <ul id="answers">
             {shuffledAnswer.current.map((answer) => {
-                    const isSelected = userAnswer[userAnswer.length - 1] ===answer;
+                    const isSelected = selectedAnswer ===answer;
                     let cssClasses ='';
                     if (answerState === 'answered' && isSelected){
                         cssClasses = 'selected';
@@ -16,7 +22,7 @@ const shuffledAnswer = useRef();
                     return (
                         <li key={answer} className="answer">
                             <button
-                                onClick={() => handleSelectAnswer(answer)}
+                                onClick={() => onSelect(answer)}
                                 className={cssClasses}
                             >{answer}
                             </button>
